@@ -5,7 +5,7 @@ if [ $# -ne 6 ] ; then
     exit 1
 fi
 
-log_file="./file_gen.log"
+log_file="./file_gen_$(date +"%Y%m%d_%H%M%S").log"
 
 path=$(readlink -f "$1")
 nested_folders_count=$2
