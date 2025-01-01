@@ -78,7 +78,7 @@ for (( folder_num=1; folder_num<=folder_count; folder_num++ )); do
   full_folder_path="$path/$folder_name"
   mkdir -p "$full_folder_path"
   echo "$full_folder_path,$date_stamp," >> $log_file
-  files_count=$((RANDOM + 1))
+  files_count=$((RANDOM % 10 + 1)) # !!!
 
   for (( file_num=1; file_num<=files_count; file_num++ )) ; do
     if  ! is_enought_dspace ; then

@@ -88,7 +88,7 @@ for (( folder_num=1; folder_num<=nested_folders_count; folder_num++ )); do
         echo "Error: Not enougth disk space."
         exit 1
     fi
-    file_name=$(generate_random_name "$file_name_chars")_$date_str\.$(generate_random_name "$file_ext_chars")
+    file_name=$(generate_random_name "$file_name_chars")\_$date_str\.$(generate_random_name "$file_ext_chars")
     full_file_path="$full_folder_path/$file_name"
     dd if=/dev/urandom of="$full_file_path" bs=1024 count=$file_size_kb &>/dev/null
     echo "$full_file_path,$date_str,$file_size_kb" >> $log_file
