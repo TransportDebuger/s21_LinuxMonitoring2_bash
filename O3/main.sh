@@ -27,7 +27,7 @@ delete_by_date () {
   start_timestamp=$(date -d "$start_time" +%s)
   end_timestamp=$(date -d "$end_time" +%s)
 
-  find . -newermt "@$start_timestamp" ! -newermt "@$end_timestamp" -exec rm -rf {} \+;
+  find ./* -newermt "@$start_timestamp" ! -newermt "@$end_timestamp" -exec rm -rf {} \+;
 }
 
 delete_by_name_mask () {
@@ -46,7 +46,7 @@ case $method in
     fi
     ;;
   2)
-    if [[ $# -lt 4 ]]; then
+    if [[ $# -lt 3 ]]; then
       echo "Enter the begining of the time inteval (example, '2023-10-01 12:00'):"
       read start_time
       
@@ -59,7 +59,7 @@ case $method in
     fi
     ;;
   3)
-    if [[ $# -lt 3 ]]; then
+    if [[ $# -lt 2 ]]; then
       echo "Enter file name mask (example, 'file_*_2023*'):"
       read mask
       
