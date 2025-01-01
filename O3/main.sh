@@ -18,7 +18,7 @@ delete_by_logfile () {
   while read -r file; do
     rm -rf "$(echo $file | cut -d ',' -f 1)"
   done < "$logfile"
-}
+} #complete
 
 delete_by_date () {
   start_time=$1
@@ -26,15 +26,14 @@ delete_by_date () {
   
   start_timestamp=$(date -d "$start_time" +%s)
   end_timestamp=$(date -d "$end_time" +%s)
-  
-  find . -type f -newermt "@$start_timestamp" ! -newermt "@$end_timestamp" -exec rm {} \;
+
+  find . -newermt "@$start_timestamp" ! -newermt "@$end_timestamp" -exec rm -rf {} \+;
 }
 
 delete_by_name_mask () {
   mask=$1
-  echo $mask
-  find . -name "$mask" -type f -exec 'rm -rf {}' \;
-}
+  find . -name "$mask" -exec rm -rf {} \+;
+} #complete
 
 case $method in
   1)
