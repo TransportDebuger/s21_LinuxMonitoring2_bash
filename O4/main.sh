@@ -1,9 +1,8 @@
 #!/bin/bash
 
 num_ips=$((RANDOM % 20 +10))
-echo "Generated IP's - $num_ips"
+# echo "Generated IP's - $num_ips"
 ips=()
-num_logs=5
 
 responses=(
     "200" # OK
