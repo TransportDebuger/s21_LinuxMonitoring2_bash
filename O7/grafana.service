@@ -1,0 +1,18 @@
+[Unit]
+Description=Grafana Server
+After=network.target
+
+[Service]
+User=grafana
+Group=grafana
+Type=simple
+Restart=on-failure
+WorkingDirectory=/opt/grafana-v11.2.0
+ExecStart=/opt/grafana-v11.2.0/bin/grafana-server
+# Give the CAP_NET_BIND_SERVICE capability
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+PrivateUsers=false
+
+[Install]
+WantedBy=multi-user.target
